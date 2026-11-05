@@ -20,7 +20,7 @@ Then open http://localhost:8123.
 
 ## Publishing
 
-The site is published with GitHub Pages from the `main` branch, at https://althaf-muhammed.github.io/rs-uninforms-site/. Pushing to `main` updates it within a few minutes.
+The site is published with GitHub Pages from the `main` branch, at https://althaf-muhammed.github.io/rs-uniforms-site/. Pushing to `main` updates it within a few minutes.
 
 To set this up again, open **Settings > Pages** on GitHub, choose **Deploy from a branch**, then branch `main` and folder `/ (root)`.
 
