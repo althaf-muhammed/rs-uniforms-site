@@ -20,13 +20,11 @@ Then open http://localhost:8123.
 
 ## Publishing
 
-The site is published with GitHub Pages from the `main` branch, at https://althaf-muhammed.github.io/rs-uniforms-site/. Pushing to `main` updates it within a few minutes.
+The site is live at https://rsuniforms.in, published with GitHub Pages from the `main` branch. Pushing to `main` updates it within a few minutes.
 
-To set this up again, open **Settings > Pages** on GitHub, choose **Deploy from a branch**, then branch `main` and folder `/ (root)`.
-
-If the site address changes, update the `og:url` and `og:image` lines in the `<head>` of `index.html`, so links shared on WhatsApp keep showing a picture.
-
-All other links in the site are relative, so it works from a repository subfolder or a custom domain.
+- **Pages settings:** in **Settings > Pages**, the source is **Deploy from a branch**, with branch `main` and folder `/ (root)`. **Enforce HTTPS** is on.
+- **Domain:** the `CNAME` file holds the custom domain, so keep it in the repository. DNS is managed at GoDaddy: four `A` records for `@` point to GitHub Pages, and a `www` `CNAME` points to `althaf-muhammed.github.io`.
+- **If the domain changes:** update the `og:url` and `og:image` lines in the `<head>` of `index.html`, so links shared on WhatsApp keep showing a picture. All other links in the site are relative.
 
 ## Common changes
 
