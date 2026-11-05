@@ -18,21 +18,15 @@ python3 -m http.server 8123
 
 Then open http://localhost:8123.
 
-## Publish on GitHub Pages
+## Publishing
 
-1. Create an empty repository on GitHub, without a README.
-2. Connect it and push, replacing the address with your own:
+The site is published with GitHub Pages from the `main` branch, at https://althaf-muhammed.github.io/rs-uninforms-site/. Pushing to `main` updates it within a few minutes.
 
-   ```bash
-   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
-   git push -u origin main
-   ```
+To set this up again, open **Settings > Pages** on GitHub, choose **Deploy from a branch**, then branch `main` and folder `/ (root)`.
 
-3. On GitHub, open **Settings > Pages**. Under **Build and deployment**, choose **Deploy from a branch**, then branch `main` and folder `/ (root)`, and save.
-4. The site appears at `https://YOUR-USERNAME.github.io/YOUR-REPO/` within a few minutes.
-5. In the `<head>` of `index.html`, uncomment the `og:image` lines and put in your site address, so links shared on WhatsApp show a picture. Commit and push.
+If the site address changes, update the `og:url` and `og:image` lines in the `<head>` of `index.html`, so links shared on WhatsApp keep showing a picture.
 
-All links in the site are relative, so it works from a repository subfolder or a custom domain.
+All other links in the site are relative, so it works from a repository subfolder or a custom domain.
 
 ## Common changes
 
