@@ -28,5 +28,5 @@ The site is live at https://rsuniforms.in, published with GitHub Pages from the 
 
 ## Common changes
 
-- **Phone number:** search `index.html` for `9742324242`, and change `WHATSAPP_NUMBER` at the top of `js/main.js`.
+- **Phone number:** update the `tel:` and `wa.me` links in `index.html` and the number shown on the page, and change `WHATSAPP_NUMBER` at the top of `js/main.js`.
 - **Enquiry form:** it opens WhatsApp with the message filled in. The site has no server, so nothing is stored.
