@@ -424,6 +424,16 @@ h1 em { display: block; }
   white-space: nowrap;
 }
 .contact__phone:hover { color: var(--gold-light); }
+.contact__email {
+  display: block;
+  margin: 26px 0 10px;
+  color: var(--paper);
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+.contact__email:hover { color: var(--gold-light); }
 .contact :focus-visible { outline-color: var(--gold-light); }
 .facts--compact { margin-top: 36px; border-color: rgba(255,255,255,.22); }
 .facts--compact > div { border-color: rgba(255,255,255,.22); grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); }
@@ -494,6 +504,8 @@ h1 em { display: block; }
 }
 .site-footer__inner { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 32px; }
 .site-footer__name { color: var(--paper); font: 400 1.25rem var(--serif); }
+.site-footer a { color: inherit; text-underline-offset: 3px; }
+.site-footer a:hover { color: var(--paper); }
 .site-footer .amp { color: var(--gold); }
 
 /* Phone quick bar */
@@ -504,7 +516,7 @@ h1 em { display: block; }
     left: 0; right: 0; bottom: 0;
     z-index: 40;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     background: var(--navy);
     padding-bottom: env(safe-area-inset-bottom);
   }

@@ -3,6 +3,13 @@
 
   var WHATSAPP_NUMBER = '919742324242';
 
+  // Email links are put together here so the address isn't sitting in the page source for simple scrapers
+  document.querySelectorAll('.js-email').forEach(function (link) {
+    var address = link.dataset.user + '@' + link.dataset.domain;
+    link.href = 'mailto:' + address + '?subject=' + encodeURIComponent('Uniform enquiry');
+    if (link.textContent.indexOf('[at]') !== -1) link.textContent = address;
+  });
+
   // Mobile menu
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
