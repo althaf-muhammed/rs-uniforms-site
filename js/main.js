@@ -100,6 +100,15 @@
       });
       el.addEventListener('pointerleave', function () { lastX = null; });
       el.addEventListener('touchstart', function () { swing(1); }, { passive: true });
+      // Phones have no cursor, so each one gives a single gentle swing as it comes into view
+      if (!finePointer && 'IntersectionObserver' in window) {
+        var once = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { swing(1); once.disconnect(); }
+          });
+        }, { threshold: 0.6 });
+        once.observe(el);
+      }
       el.addEventListener('animationend', function (e) {
         if (e.animationName === 'settle') el.classList.add('is-settled');
         el.classList.remove('is-swinging');
