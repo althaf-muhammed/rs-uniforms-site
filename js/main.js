@@ -33,6 +33,106 @@
     }
   });
 
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Items in a grid arrive one after another rather than all at once
+  document.querySelectorAll('.stats, .checks, .sectors, .range, .timeline, .process__side').forEach(function (group) {
+    var items = group.querySelectorAll(':scope > [data-reveal], :scope > li');
+    items.forEach(function (item, i) {
+      item.setAttribute('data-reveal', '');
+      item.style.setProperty('--d', (i % 3) * 90 + 'ms');
+    });
+  });
+
+  // Header gets a soft shadow once the page scrolls
+  var header = document.querySelector('.site-header');
+  function onScrollHeader() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
+  onScrollHeader();
+
+  if (!reduceMotion) {
+    // Photo bands drift slightly slower than the page
+    var parallax = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    // The timeline's gold line fills in as you read down it
+    var timeline = document.querySelector('.timeline');
+    var ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        var vh = window.innerHeight;
+        parallax.forEach(function (band) {
+          var r = band.getBoundingClientRect();
+          if (r.bottom < 0 || r.top > vh) return;
+          var progress = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1 to 1
+          band.style.setProperty('--shift', (progress * -6).toFixed(2) + '%');
+        });
+        if (timeline) {
+          var t = timeline.getBoundingClientRect();
+          var filled = Math.min(1, Math.max(0, (vh * 0.6 - t.top) / t.height));
+          timeline.style.setProperty('--fill', filled.toFixed(3));
+          timeline.querySelectorAll('li').forEach(function (li) {
+            li.classList.toggle('is-reached', li.getBoundingClientRect().top < vh * 0.6);
+          });
+        }
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    // Garments on the rail swing on their hangers when touched
+    document.querySelectorAll('[data-swing]').forEach(function (el) {
+      function swing() {
+        if (el.classList.contains('is-swinging')) return;
+        el.classList.add('is-swinging');
+      }
+      el.addEventListener('mouseenter', swing);
+      el.addEventListener('touchstart', swing, { passive: true });
+      el.addEventListener('animationend', function () { el.classList.remove('is-swinging'); });
+    });
+
+    if (finePointer) {
+      // Cards tilt gently towards the pointer, with a soft light across them
+      document.querySelectorAll('[data-tilt]').forEach(function (card) {
+        var max = parseFloat(card.getAttribute('data-tilt')) || 5;
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width;
+          var y = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--ry', ((x - 0.5) * max * 2).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', ((0.5 - y) * max * 2).toFixed(2) + 'deg');
+          card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+          card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+          card.classList.add('is-tilting');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+          card.classList.remove('is-tilting');
+        });
+      });
+
+      // The cover picture has depth: the person, circle and ring move by different amounts
+      var hero = document.querySelector('.hero');
+      var art = document.querySelector('.hero__art');
+      if (hero && art) {
+        hero.addEventListener('pointermove', function (e) {
+          var r = hero.getBoundingClientRect();
+          art.style.setProperty('--px', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+          art.style.setProperty('--py', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+        });
+        hero.addEventListener('pointerleave', function () {
+          art.style.setProperty('--px', '0');
+          art.style.setProperty('--py', '0');
+        });
+      }
+    }
+  }
+
   if ('IntersectionObserver' in window) {
     // Sections ease in as they arrive
     var revealItems = document.querySelectorAll('[data-reveal]');

@@ -93,7 +93,7 @@
             <defs><path id="badge-arc" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs>
             <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1"/>
             <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width=".8"/>
-            <text class="badge__ring"><textPath href="#badge-arc" textLength="275">A FAMILY IN CLOTHING · BANGALORE ·</textPath></text>
+            <g class="badge__spin"><text class="badge__ring"><textPath href="#badge-arc" textLength="275">A FAMILY IN CLOTHING · BANGALORE ·</textPath></text></g>
             <text class="badge__since" x="60" y="51" text-anchor="middle">SINCE</text>
             <text class="badge__year" x="60" y="72" text-anchor="middle">1986</text>
           </svg>
@@ -103,7 +103,7 @@
 
     <!-- 01 Who we are -->
     <section class="section" id="about">
-      <figure class="band band--tall">
+      <figure class="band band--tall" data-parallax>
         <img src="assets/images/rack-showroom.webp" alt="R&amp;S uniforms on a rail: a pale blue shirt, navy polo, black blazer, teal scrubs and a white doctor's coat, with folded stacks below." width="1536" height="964" loading="lazy">
       </figure>
       <div class="wrap">
@@ -116,10 +116,10 @@
           <p>We keep it simple. Clear prices, proper fabric, sizes that fit, and orders that arrive on the date we agreed.</p>
         </div>
         <ul class="stats" data-reveal>
-          <li><strong>Since 1986</strong><span>A family in the clothing trade</span></li>
-          <li><strong>Any team</strong><span>Offices, schools, hospitals, factories</span></li>
-          <li><strong>Any style</strong><span>Made to your design or ours</span></li>
-          <li><strong>Your logo</strong><span>Embroidered, printed and more</span></li>
+          <li data-tilt="6"><strong>Since 1986</strong><span>A family in the clothing trade</span></li>
+          <li data-tilt="6"><strong>Any team</strong><span>Offices, schools, hospitals, factories</span></li>
+          <li data-tilt="6"><strong>Any style</strong><span>Made to your design or ours</span></li>
+          <li data-tilt="6"><strong>Your logo</strong><span>Embroidered, printed and more</span></li>
         </ul>
       </div>
     </section>
@@ -133,25 +133,25 @@
           <p class="sub">Four things we look at before any order leaves us.</p>
         </header>
         <ul class="checks">
-          <li class="card check" data-reveal>
+          <li class="card check" data-reveal data-tilt="4">
             <span class="check__icon"><img src="assets/illustrations/check-fabric.svg" alt="" width="99" height="98"></span>
             <span class="num">01</span>
             <h3>Fabric</h3>
             <p>Chosen for the work it has to do. Breathable for schools and hospitals, hard wearing for factories, smart for offices.</p>
           </li>
-          <li class="card check" data-reveal>
+          <li class="card check" data-reveal data-tilt="4">
             <span class="check__icon"><img src="assets/illustrations/check-stitching.svg" alt="" width="114" height="89"></span>
             <span class="num">02</span>
             <h3>Stitching</h3>
             <p>Strong seams where a garment takes the most strain, so it lasts through daily wear and washing.</p>
           </li>
-          <li class="card check" data-reveal>
+          <li class="card check" data-reveal data-tilt="4">
             <span class="check__icon"><img src="assets/illustrations/check-fit.svg" alt="" width="118" height="79"></span>
             <span class="num">03</span>
             <h3>Fit</h3>
             <p>A full range of sizes, so every person on the team looks right and feels comfortable.</p>
           </li>
-          <li class="card check" data-reveal>
+          <li class="card check" data-reveal data-tilt="4">
             <span class="check__icon"><img src="assets/illustrations/check-finish.svg" alt="" width="102" height="92"></span>
             <span class="num">04</span>
             <h3>Finish</h3>
@@ -159,7 +159,7 @@
           </li>
         </ul>
       </div>
-      <figure class="band band--short">
+      <figure class="band band--short" data-parallax>
         <img src="assets/images/folded-stack.webp" alt="Folded stacks of shirts, polos, trousers and scrubs with a measuring tape." width="1891" height="454" loading="lazy">
       </figure>
     </section>
@@ -172,42 +172,42 @@
           <h2>If your people wear it to work, <em>we make it.</em></h2>
         </header>
         <ul class="sectors">
-          <li class="card sector" data-reveal>
+          <li class="card sector" data-reveal data-tilt="3">
             <div class="sector__art"><img src="assets/images/sector-office.webp" alt="A white shirt, black blazer and grey trousers." width="1000" height="533" loading="lazy"></div>
             <div class="sector__body">
               <h3>Companies and offices <span class="num">01</span></h3>
               <p>Formal shirts, trousers, blazers, polo t-shirts and branded t-shirts for staff, front desks and events.</p>
             </div>
           </li>
-          <li class="card sector" data-reveal>
+          <li class="card sector" data-reveal data-tilt="3">
             <div class="sector__art"><img src="assets/images/sector-school.webp" alt="School uniforms: shirts with ties, a skirt and a pinafore." width="1000" height="521" loading="lazy"></div>
             <div class="sector__body">
               <h3>Schools and colleges <span class="num">02</span></h3>
               <p>Shirts, trousers, skirts, pinafores, blazers, tracksuits and sports kits, in every size from the youngest class up.</p>
             </div>
           </li>
-          <li class="card sector" data-reveal>
+          <li class="card sector" data-reveal data-tilt="3">
             <div class="sector__art"><img src="assets/images/sector-hospital.webp" alt="A doctor's coat and teal scrubs." width="1000" height="688" loading="lazy"></div>
             <div class="sector__body">
               <h3>Hospitals and clinics <span class="num">03</span></h3>
               <p>Scrubs, doctor coats, nurse uniforms, and uniforms for housekeeping and support staff.</p>
             </div>
           </li>
-          <li class="card sector" data-reveal>
+          <li class="card sector" data-reveal data-tilt="3">
             <div class="sector__art"><img src="assets/images/sector-factory.webp" alt="Workwear: a two-piece work suit, a coverall with reflective strips and a work jacket." width="1000" height="450" loading="lazy"></div>
             <div class="sector__body">
               <h3>Factories and industry <span class="num">04</span></h3>
               <p>Coveralls, work shirts and trousers, aprons and jackets, made for hard daily use.</p>
             </div>
           </li>
-          <li class="card sector" data-reveal>
+          <li class="card sector" data-reveal data-tilt="3">
             <div class="sector__art"><img src="assets/images/sector-hotel.webp" alt="A chef coat, a striped apron and a waiter's waistcoat with bow tie." width="1000" height="527" loading="lazy"></div>
             <div class="sector__body">
               <h3>Hotels, restaurants and more <span class="num">05</span></h3>
               <p>Chef coats, aprons, front office and housekeeping uniforms.</p>
             </div>
           </li>
-          <li class="card card--navy unlisted" data-reveal>
+          <li class="card card--navy unlisted" data-reveal data-tilt="3">
             <h3>Not listed here?</h3>
             <p>Send us a photo of your current uniform and we will tell you what we can do.</p>
             <a class="unlisted__link" href="https://wa.me/919742324242" target="_blank" rel="noopener">WhatsApp +91 97423 24242</a>
@@ -224,15 +224,15 @@
           <h2>The full range, <em>in one place.</em></h2>
         </header>
         <ul class="range">
-          <li data-reveal><div class="tile"><img src="assets/images/make-shirts.webp" alt="" width="532" height="700" loading="lazy"></div><h3>Shirts</h3><p>Half and full sleeve.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-polos.webp" alt="" width="519" height="700" loading="lazy"></div><h3>T-shirts and polos</h3><p>Plain or with your logo.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-trousers.webp" alt="" width="700" height="640" loading="lazy"></div><h3>Trousers and skirts</h3><p>Formal, school and work fits.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-blazers.webp" alt="" width="469" height="700" loading="lazy"></div><h3>Blazers</h3><p>For offices and schools.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-scrubs.webp" alt="" width="623" height="700" loading="lazy"></div><h3>Scrubs</h3><p>Tops and pants for hospitals.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-coats.webp" alt="" width="453" height="700" loading="lazy"></div><h3>Lab and doctor coats</h3><p>Full length, with pockets.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-aprons.webp" alt="" width="700" height="532" loading="lazy"></div><h3>Aprons and chef coats</h3><p>For kitchens and cafes.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-coveralls.webp" alt="" width="382" height="700" loading="lazy"></div><h3>Coveralls</h3><p>For factories and sites.</p></li>
-          <li data-reveal><div class="tile"><img src="assets/images/make-sportswear.webp" alt="" width="700" height="620" loading="lazy"></div><h3>Sportswear</h3><p>Jerseys and tracksuits.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-shirts.webp" alt="" width="532" height="700" loading="lazy"></div><h3>Shirts</h3><p>Half and full sleeve.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-polos.webp" alt="" width="519" height="700" loading="lazy"></div><h3>T-shirts and polos</h3><p>Plain or with your logo.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-trousers.webp" alt="" width="700" height="640" loading="lazy"></div><h3>Trousers and skirts</h3><p>Formal, school and work fits.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-blazers.webp" alt="" width="469" height="700" loading="lazy"></div><h3>Blazers</h3><p>For offices and schools.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-scrubs.webp" alt="" width="623" height="700" loading="lazy"></div><h3>Scrubs</h3><p>Tops and pants for hospitals.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-coats.webp" alt="" width="453" height="700" loading="lazy"></div><h3>Lab and doctor coats</h3><p>Full length, with pockets.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-aprons.webp" alt="" width="700" height="532" loading="lazy"></div><h3>Aprons and chef coats</h3><p>For kitchens and cafes.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-coveralls.webp" alt="" width="382" height="700" loading="lazy"></div><h3>Coveralls</h3><p>For factories and sites.</p></li>
+          <li data-reveal><div class="tile" data-tilt="7"><img src="assets/images/make-sportswear.webp" alt="" width="700" height="620" loading="lazy"></div><h3>Sportswear</h3><p>Jerseys and tracksuits.</p></li>
         </ul>
         <p class="note">Need something that is not here? <a href="#contact">Send us a photo</a> and we will tell you if we can make it.</p>
       </div>
@@ -287,7 +287,7 @@
           <div class="process__side">
             <img class="photo" src="assets/images/process-shirts.webp" alt="Pale blue, white and navy shirts on hangers." width="645" height="496" loading="lazy" data-reveal>
             <img class="photo" src="assets/images/process-scrubs.webp" alt="Blue and green scrub sets on hangers." width="678" height="496" loading="lazy" data-reveal>
-            <div class="card card--navy start" data-reveal>
+            <div class="card card--navy start" data-reveal data-tilt="3">
               <div>
                 <h3>Ready to start?</h3>
                 <p class="start__scan">Scan to message us on WhatsApp.</p>
@@ -304,8 +304,8 @@
 
     <!-- 07 Let's talk -->
     <section class="section dark contact" id="contact">
-      <figure class="rail">
-        <img src="assets/images/rack-hanging.webp" alt="R&amp;S uniforms hanging on a gold rail: shirt, polo, blazer, scrubs and doctor's coat." width="1616" height="700" loading="lazy">
+      <figure class="rail" data-reveal>
+        <img data-swing src="assets/images/rack-hanging.webp" alt="R&amp;S uniforms hanging on a gold rail: shirt, polo, blazer, scrubs and doctor's coat." width="1616" height="700" loading="lazy">
       </figure>
       <div class="wrap">
         <header class="head" data-reveal>
