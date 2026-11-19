@@ -248,7 +248,9 @@ h3 { color: var(--navy); font-size: 1.0625rem; font-weight: 500; line-height: 1.
   padding-block: clamp(48px, 7vw, 88px) 0;
 }
 .hero__text { padding-bottom: clamp(48px, 7vw, 88px); }
-h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch; }
+h1 { font-size: clamp(2.375rem, 4.6vw, 3.875rem); line-height: 1.08; }
+h1 .line { display: block; white-space: nowrap; }
+@media (max-width: 560px) { h1 .line { display: inline; white-space: normal; } }
 .hero__lede { margin-top: 24px; max-width: 40ch; color: var(--on-navy); font-size: 1.0625rem; }
 
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
@@ -323,12 +325,11 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
 
 /* Sections */
 .section { padding-block: var(--section); }
-.section--flush-bottom { padding-bottom: 0; }
 
-.band { overflow: hidden; }
-.band img { width: 100%; height: 100%; object-fit: cover; }
-.band--tall { height: clamp(260px, 42vw, 560px); margin: calc(var(--section) * -1) 0 var(--section); }
-.band--short { height: clamp(140px, 22vw, 300px); margin-top: var(--section); }
+/* Photos shown whole, at their own shape, lined up with the page content */
+.photo-band img { width: 100%; height: auto; border-radius: var(--radius); }
+.photo-band--top { margin-bottom: clamp(48px, 6vw, 72px); }
+.photo-band--bottom { margin-top: clamp(40px, 5vw, 64px); }
 
 .two-col {
   display: grid;
@@ -375,6 +376,7 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
   grid-template-columns: auto 1fr;
   grid-template-areas: "icon num" "title title" "text text";
   align-items: start;
+  align-content: start;
   padding: 26px 26px 30px;
 }
 .check__icon {
@@ -397,13 +399,12 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
 .sectors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .sector { overflow: hidden; }
 .sector__art {
-  display: grid;
-  place-items: center;
-  height: clamp(170px, 20vw, 230px);
-  padding: 18px 24px;
+  height: clamp(180px, 20vw, 240px);
+  padding: 20px 24px;
   background: var(--tile);
 }
-.sector__art img { width: auto; max-height: 100%; object-fit: contain; }
+/* The photo always fits inside its panel, whatever its shape */
+.sector__art img { width: 100%; height: 100%; object-fit: contain; }
 .sector__body { padding: 18px 24px 24px; }
 .sector h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
 .sector p { margin-top: 6px; color: var(--muted); font-size: 0.9375rem; }
@@ -428,16 +429,14 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
 /* What we make */
 .range { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 20px; }
 .tile {
-  display: grid;
-  place-items: center;
   aspect-ratio: 5 / 4;
   margin-bottom: 14px;
-  padding: 16px;
+  padding: 18px;
   background: var(--tile);
   border-radius: var(--radius);
   overflow: hidden;
 }
-.tile img { width: auto; max-height: 100%; object-fit: contain; transition: transform .35s; }
+.tile img { width: 100%; height: 100%; object-fit: contain; transition: transform .35s; }
 .range li:hover .tile img { transform: scale(1.04); }
 .range p { margin-top: 2px; color: var(--muted); font-size: 0.875rem; }
 .note {
@@ -507,9 +506,10 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px clamp(32px, 5vw, 64px);
-  align-items: start;
+  align-items: stretch;
 }
-.timeline { position: relative; }
+/* The five steps spread out to match the photos beside them, top and bottom level */
+.timeline { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(28px, 4vw, 44px); }
 .timeline::before {
   content: "";
   position: absolute;
@@ -524,9 +524,7 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr);
   gap: 22px;
-  padding-bottom: clamp(30px, 4vw, 48px);
 }
-.timeline li:last-child { padding-bottom: 0; }
 .timeline__no {
   display: grid;
   place-items: center;
@@ -753,8 +751,6 @@ h1 { font-size: clamp(2.625rem, 6vw, 4.5rem); line-height: 1.06; max-width: 13ch
   [data-tilt].is-tilting { box-shadow: 0 20px 40px -24px rgba(28, 39, 65, .35); }
   .tile[data-tilt].is-tilting { box-shadow: 0 20px 40px -24px rgba(28, 39, 65, .4); }
 
-  /* Photo bands drift slower than the page */
-  [data-parallax] img { height: 116%; margin-top: -8%; transform: translateY(var(--shift, 0)); will-change: transform; }
 
   /* Garments in the sector cards swing on their hangers */
   .sector__art img { transform-origin: 50% 0; }
