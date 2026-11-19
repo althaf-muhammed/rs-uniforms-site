@@ -33,24 +33,9 @@
     }
   });
 
-  // Garments on the rail sway when you touch them
-  document.querySelectorAll('.rack__slot').forEach(function (slot) {
-    function sway() {
-      if (slot.classList.contains('is-swaying')) return;
-      slot.classList.add('is-swaying');
-    }
-    slot.addEventListener('mouseenter', sway);
-    slot.addEventListener('touchstart', sway, { passive: true });
-    slot.addEventListener('animationend', function () {
-      slot.classList.remove('is-swaying');
-    });
-  });
-
   if ('IntersectionObserver' in window) {
     // Sections ease in as they arrive
-    var revealItems = document.querySelectorAll(
-      '.section__head, .split__head, .about, .facts, .row, .sector, .range li, .branding-head, .methods li, .fabric, .steps li, .contact__info, .enquiry'
-    );
+    var revealItems = document.querySelectorAll('[data-reveal]');
     var revealer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -60,7 +45,6 @@
       });
     }, { rootMargin: '0px 0px -6% 0px' });
     revealItems.forEach(function (el) {
-      el.classList.add('reveal');
       revealer.observe(el);
     });
 
@@ -73,8 +57,12 @@
       entries.forEach(function (entry) {
         var link = links[entry.target.id];
         if (!link) return;
-        if (entry.isIntersecting) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
+        if (entry.isIntersecting) {
+          Object.keys(links).forEach(function (id) { links[id].removeAttribute('aria-current'); });
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     Object.keys(links).forEach(function (id) {
