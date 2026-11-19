@@ -84,15 +84,26 @@
     window.addEventListener('resize', onScroll);
     onScroll();
 
-    // Garments on the rail swing on their hangers when touched
+    // Garments swing on their hangers when the cursor brushes past, in the direction it moves.
+    // They never fade: the arrival animation runs once, then only the swing plays.
     document.querySelectorAll('[data-swing]').forEach(function (el) {
-      function swing() {
+      var lastX = null;
+      function swing(dir) {
         if (el.classList.contains('is-swinging')) return;
-        el.classList.add('is-swinging');
+        el.style.setProperty('--dir', dir < 0 ? -1 : 1);
+        el.classList.add('is-settled', 'is-swinging');
       }
-      el.addEventListener('mouseenter', swing);
-      el.addEventListener('touchstart', swing, { passive: true });
-      el.addEventListener('animationend', function () { el.classList.remove('is-swinging'); });
+      el.addEventListener('pointerenter', function (e) { lastX = e.clientX; });
+      el.addEventListener('pointermove', function (e) {
+        if (lastX !== null && Math.abs(e.clientX - lastX) > 6) swing(e.clientX - lastX);
+        lastX = e.clientX;
+      });
+      el.addEventListener('pointerleave', function () { lastX = null; });
+      el.addEventListener('touchstart', function () { swing(1); }, { passive: true });
+      el.addEventListener('animationend', function (e) {
+        if (e.animationName === 'settle') el.classList.add('is-settled');
+        el.classList.remove('is-swinging');
+      });
     });
 
     if (finePointer) {
