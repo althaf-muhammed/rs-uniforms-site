@@ -267,8 +267,9 @@ h1 .line { display: block; white-space: nowrap; }
   align-self: end;
   height: clamp(440px, 52vw, 660px);
   container-type: size;
-  --d: min(80cqw, 80cqh);           /* ring diameter */
-  --lift: 9cqh;                     /* space under the ring */
+  --d: min(78cqw, 76cqh);           /* ring diameter */
+  --floor: max(28px, 6cqh);         /* clear space between the picture and the line below */
+  --lift: calc(var(--floor) + 9cqh);/* ring sits above the floor; the feet stand below it, as in the brochure */
 }
 .hero__ring, .hero__disc {
   position: absolute;
@@ -290,19 +291,21 @@ h1 .line { display: block; white-space: nowrap; }
 }
 .hero__person {
   position: absolute;
-  bottom: 0;
+  /* the photo has a little empty space under the shoes (3.25% of its height); offset it so the
+     shoes stand exactly on the floor line, level with the bottom of the seal */
+  bottom: calc(var(--floor) - (100cqh - var(--floor)) * .0325);
   left: 50%;
-  height: 100%;
+  height: calc(100% - var(--floor));
   width: auto;
   max-width: none;
   transform: translateX(-50%);
   filter: drop-shadow(0 18px 18px rgba(0,0,0,.28));
 }
-/* Seal sits in the bottom-left corner, clear of the ring */
+/* Seal sits bottom-left on the same floor line as the person's feet, clear of the ring and the line below */
 .badge {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: var(--floor);
   width: min(clamp(80px, 9vw, 112px), 22cqw);
   color: var(--gold);
 }
